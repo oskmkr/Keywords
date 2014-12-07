@@ -12,8 +12,10 @@ public class KeywordCrawlerLauncher {
 
 	public static void main(String[] args) throws Exception {
 		String crawlStorageFolder = "/data/crawl/root";
+		String rootFolder = "/data/crawl/root";
 		int numberOfCrawlers = 7;
-
+		String storageFolder = rootFolder + "/documents";
+		
 		CrawlConfig config = new CrawlConfig();
 		config.setCrawlStorageFolder(crawlStorageFolder);
 
@@ -37,7 +39,8 @@ public class KeywordCrawlerLauncher {
 		// controller.addSeed("http://www.ics.uci.edu/");
 
 		controller.addSeed("http://blog.naver.com/oskmkr");
-		
+
+		KeywordCrawler.configure(storageFolder);
 		/*
 		 * Start the crawl. This is a blocking operation, meaning that your code
 		 * will reach the line after this only when crawling is finished.

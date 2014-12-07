@@ -26,6 +26,11 @@
 		<level value="OFF" />
 		<appender-ref ref="console" />
 	</logger>
+	
+	<logger name="org.apache.http.impl.conn.httpclient.wire" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="console" />
+	</logger>
 
 	<root level="DEBUG">
 		<appender-ref ref="console" />

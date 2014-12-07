@@ -1,5 +1,6 @@
 package io.oskm.keywords.crawler;
 
+import java.io.File;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -11,6 +12,7 @@ import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import edu.uci.ics.crawler4j.url.WebURL;
+import edu.uci.ics.crawler4j.util.IO;
 
 public class KeywordCrawler extends WebCrawler {
 	private static final Logger LOG = LoggerFactory
@@ -21,6 +23,15 @@ public class KeywordCrawler extends WebCrawler {
 					+ "|png|tiff?|mid|mp2|mp3|mp4"
 					+ "|wav|avi|mov|mpeg|ram|m4v|pdf"
 					+ "|rm|smil|wmv|swf|wma|zip|rar|gz))$");
+	private static File storageFolder;
+
+	public static void configure(String storageFolderName) {
+
+		storageFolder = new File(storageFolderName);
+		if (!storageFolder.exists()) {
+			storageFolder.mkdirs();
+		}
+	}
 
 	/**
 	 * You should implement this function to specify whether the given url
@@ -29,8 +40,7 @@ public class KeywordCrawler extends WebCrawler {
 	@Override
 	public boolean shouldVisit(Page page, WebURL url) {
 		String href = url.getURL().toLowerCase();
-		return !FILTERS.matcher(href).matches()
-				&& href.startsWith("http://www.ics.uci.edu/");
+		return !FILTERS.matcher(href).matches();
 	}
 
 	/**
@@ -65,13 +75,28 @@ public class KeywordCrawler extends WebCrawler {
 			LOG.debug("Html length: " + html.length());
 			LOG.debug("Number of outgoing links: " + links.size());
 		}
-		
+
 		Header[] responseHeaders = page.getFetchResponseHeaders();
-	    if (responseHeaders != null) {
-	    	LOG.debug("Response headers:");
-	      for (Header header : responseHeaders) {
-	    	  LOG.debug("\t{}: {}", header.getName(), header.getValue());
-	      }
-	    }
+		if (responseHeaders != null) {
+			LOG.debug("Response headers:");
+			for (Header header : responseHeaders) {
+				LOG.debug("\t{}: {}", header.getName(), header.getValue());
+			}
+		}
+
+		// Not interested in very small images
+		if (page.getContentData().length < 10 * 1024) {
+			return;
+		}
+
+		// get a unique name for storing this image
+		String extension = url.substring(url.lastIndexOf("."));
+		String hashedName = Cryptography.MD5(url) + extension;
+
+		// store image
+		IO.writeBytesToFile(page.getContentData(),
+				storageFolder.getAbsolutePath() + "/" + hashedName);
+
+		logger.info("Stored: {}", url);
 	}
 }
