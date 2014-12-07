@@ -7,7 +7,7 @@ bin
 .classpath
 .project
 .git
-.settings/
+/.settings/
 *.class
 *.bak
 *.iml
