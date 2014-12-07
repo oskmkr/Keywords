@@ -11,3 +11,4 @@ bin
 *.class
 *.bak
 *.iml
+/logs/
