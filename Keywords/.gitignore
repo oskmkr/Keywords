@@ -1,0 +1,13 @@
+webapp/
+webapp/WEB-INF/lib/
+target
+build
+bin
+.idea
+.classpath
+.project
+.git
+.settings/
+*.class
+*.bak
+*.iml
