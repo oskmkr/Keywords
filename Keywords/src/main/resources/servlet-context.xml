@@ -9,87 +9,50 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
-	<import resource="applicationContext-amqp-producer.xml" />
-
 	<mvc:annotation-driven />
-	<!-- mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/**" /> <bean 
-		class="com.naver.cafe.chat.common.support.AllowIPCheckInterceptor" /> </mvc:interceptor> 
-		<mvc:interceptor> <mvc:mapping path="/**" /> <bean class="com.naver.line.scs.common.support.ChannelAppUserContextHolderInterceptor" 
-		init-method="init" /> </mvc:interceptor> </mvc:interceptors -->
+
+	<context:annotation-config />
+
+	<!-- Configures support for @Controllers -->
+	<context:component-scan base-package="io.oskm.keywords">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		<context:exclude-filter type="annotation" expression="org.springframework.context.annotation.Configuration" />
+	</context:component-scan>
+
+	<!-- 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="com.oskm.interceptor.CharacterInterceptor" />
-			<!-- <mvc:exclude-mapping path="/admin/**"/> -->
+			<mvc:exclude-mapping path="/admin/**"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
-	<!-- Configures support for @Controllers -->
-	<context:component-scan base-package="com.oskm">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Service" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Repository" />
-	</context:component-scan>
-	<context:annotation-config />
-
-
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-	<!-- MappingJacksonHttpMessageConverter 를 추가하기ㅏ위해서 AnnotationMethodHandlerAdapter를 
-		재정의하였다 -->
-	<bean id="handlerAdapter"
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<bean
-					class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
-				<bean
-					class="org.springframework.http.converter.StringHttpMessageConverter">
-					<property name="writeAcceptCharset" value="false" />
-					<property name="supportedMediaTypes">
-						<list>
-							<value>text/html; charset=utf-8</value>
-						</list>
-					</property>
-				</bean>
-				<bean
-					class="org.springframework.http.converter.ResourceHttpMessageConverter" />
-				<bean
-					class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
-				<bean
-					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
-			</list>
-		</property>
-		<property name="webBindingInitializer">
-			<bean
-				class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
-				<property name="validator" ref="validator" />
-			</bean>
-		</property>
-	</bean>
-	<!-- ExceptionHandler에 대한 처리 -->
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<bean
-					class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
-				<bean
-					class="org.springframework.http.converter.StringHttpMessageConverter">
-					<property name="writeAcceptCharset" value="false" />
-				</bean>
-				<bean
-					class="org.springframework.http.converter.ResourceHttpMessageConverter" />
-				<bean
-					class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
-				<bean
-					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
-			</list>
-		</property>
-	</bean>
+ 	-->
+ 	<!--
+		1. HandlerMapping
+		- 요청정보를 기준으로 어떤 컨트롤러를 사용할 것인지를 결정하는 로직을 담당한다. 디폴트로 설정되는 있는 핸들러매핑은 BeanNameHandlerMapping과 DefaultAnnotationHandlerMapping 2가지가 설정되어 있다.
+		2. HandlerAdapter
+		- 핸들러매핑으로 선택한 컨트롤러를 DispatcherServlet이 호출할때 사용하는 어댑터이다. 디폴트로 설정되어 있는 핸들러어댑터는 HttpRequestHandlerAdapter, SimpleControllerHandlerAdapter, AnnotationMethodHanlderAdapter 3가지이다.
+		@RequestMapping과 @Controller 애노테이션을 통해 정의되는 컨트롤러의 경우 DefaultAnnotationHandlerMapping에 의해 핸들러가 결정되고, 그에 대응되는 AnnotationMethodHandlerAdapter에 의해 호출이 일어난다.
+		3. HandlerExceptionResolver
+		- 예외가 발생했을 때 예외의 종류에 따라 에러페이지를 표시한다거나, 관리자에게 통보해주는 등의 작업은 개발 컨트롤러가 아니라 프론트 컨트롤러인 DispatcherServlet을 통해 처리되어야 한다. 디폴트로 설정되는 있는 리졸버는 AnnotationMethodHanlderExceptionResolver, ResponseStatusExceptionResolver, DefaultHanlderExceptionResolver 3가지가 등록되어 있다.
+		4. ViewResolver
+		- 컨트롤러가 리턴한 뷰 이름을 참고해서 적절한 뷰 오브젝트를 찾아주는 로직을 가진 전략 오프젝트이다. 뷰의 종류에 따라 적절한 뷰 리졸버를 추가로 설정해줄 수 있다.
+		5. LocaleResolver
+		- 지역 정보를 결정해주는 전략 오브젝트이다. 디폴트인 AcceptHeaderLocalResolver는 HTTP 헤더의 정보를 보고 지역정보를 설정해준다.
+		6. ThemeResolver
+		- 테마를 가지고 이를 변경해서 사이트를 구성할 경우 쓸 수 있는 테마정보를 결정해주는 전략 오브젝트이다. 
+		7. RequestToViewNameTranslator
+		-  컨트롤러에서 뷰 이름이나 뷰 오브젝트를 제공해주지 않았을 경우 URL과 같은 요청정보를 참고해서 자동으로 뷰 이름을 생성해주는 전략 오브젝트이다. 디폴트는 DefaultRequestToViewNameTranslator이다. 
+ 	 -->
+ 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" p:alwaysUseFullPath="true" />
+ 	
+ 	<bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+ 		<!-- message convertors -->
+ 	</bean>
+ 	
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
