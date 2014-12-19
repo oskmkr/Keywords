@@ -53,12 +53,14 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
  		<!-- message convertors -->
  	</bean>
  	
-	<bean id="jspViewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+<mvc:resources location="/WEB-INF/jsp" mapping="/static/**"/>
+<mvc:resources >
+
+</mvc:resources>
 </beans>
