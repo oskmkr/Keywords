@@ -1,29 +1,30 @@
 package io.oskm.keywords.web;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class HomeController implements BeanFactoryAware {
-	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
-	
-	@RequestMapping("/")
-	public String viewHome() {
+/**
+ * themes 
+ * @reference http://bootswatch.com/
+ * @author oskm
+ *
+ */
+@Controller
+public class HomeController {
+
+	/**
+	 * http://bootstraptaste.com/theme/squadfree/
+	 * @return
+	 */
+	@RequestMapping("/intro")
+	public String intro() {
 		
-		return "viewHome";
+		return "intro";
 	}
 	
-	@Autowired
-	private String myString;
-
-	@Override
-	public void setBeanFactory(BeanFactory context) throws BeansException {
-		//LOG.debug(context.toString());
+	@RequestMapping({"/", "/home"})
+	public String viewHome() {
+		
+		return "home";
 	}
 }

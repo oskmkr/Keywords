@@ -1,5 +1,5 @@
 /webapp/WEB-INF/classes
-/webapp/WEB-INF/lib
+/webapp/WEB-INF/lib/
 *.jar
 classes/
 target
