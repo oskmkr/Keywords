@@ -16,15 +16,19 @@ public class HomeController {
 	 * http://bootstraptaste.com/theme/squadfree/
 	 * @return
 	 */
-	@RequestMapping("/intro")
+	@RequestMapping({"/", "/intro"})
 	public String intro() {
 		
 		return "intro";
 	}
 	
-	@RequestMapping({"/", "/home"})
+	@RequestMapping({"/home"})
 	public String viewHome() {
-		
 		return "home";
+	}
+	
+	@RequestMapping({"/google_plus"})
+	public String viewGooglePlus() {
+		return "google_plus";
 	}
 }

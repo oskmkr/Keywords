@@ -7,12 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>Keywords - all about thinks</title>
-
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.css">
 <!-- Fonts -->
 <link href="resources/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
@@ -72,6 +69,13 @@
 			<h4>당신의 키워드, 그리고 모두의 키워드를 함께 나눠보세요.</h4>
 			<p class="lead">
       		<a href="getting-started#download" class="btn btn-skin btn-lg">Facebook 으로 로그인</a>
+      		<a href="getting-started#download" class="btn btn-default btn-lg">Facebook 으로 로그인</a>
+      		<a href="getting-started#download" class="btn btn-primary btn-lg">Facebook 으로 로그인</a>
+      		<a href="getting-started#download" class="btn btn-success btn-lg">Facebook 으로 로그인</a>
+      		<a href="getting-started#download" class="btn btn-info btn-lg">Facebook 으로 로그인</a>
+      		<a href="getting-started#download" class="btn btn-warning btn-lg">Facebook 으로 로그인</a>
+      		<a href="getting-started#download" class="btn btn-danger btn-lg">Facebook 으로 로그인</a>
+      		<a href="getting-started#download" class="btn btn-link btn-lg">Facebook 으로 로그인</a>
     		</p>
 		</div>
 		<div class="page-scroll">

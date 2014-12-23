@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- 
+http://www.bootstrapzero.com/bootstrap-template/google-plus
+--%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -91,7 +94,7 @@
 <div class="container" id="main">
    <div class="row">
    <div class="col-sm-6 col-md-4">
-        <div class="panel panel-default wow bounceInUp" data-wow-delay="0.4s">
+        <div class="panel panel-default">
           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
    			<div class="panel-body">
               <div class="list-group">
@@ -519,7 +522,6 @@ creating Web pages.</p>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
-	<script src="resources/js/lib/wow.js"></script>
 		
         <script type="text/javascript">
         
@@ -543,7 +545,6 @@ creating Web pages.</p>
 	<!-- JavaScript jQuery code from Bootply.com editor  -->
 	<script type='text/javascript'>
 		$(document).ready(function() {
-			new WOW().init();
 
 		});
 	</script>
