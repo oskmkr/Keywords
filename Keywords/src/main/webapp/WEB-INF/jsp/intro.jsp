@@ -68,14 +68,7 @@
 			</h2>
 			<h4>당신의 키워드, 그리고 모두의 키워드를 함께 나눠보세요.</h4>
 			<p class="lead">
-      		<a href="getting-started#download" class="btn btn-skin btn-lg">Facebook 으로 로그인</a>
-      		<a href="getting-started#download" class="btn btn-default btn-lg">Facebook 으로 로그인</a>
-      		<a href="getting-started#download" class="btn btn-primary btn-lg">Facebook 으로 로그인</a>
-      		<a href="getting-started#download" class="btn btn-success btn-lg">Facebook 으로 로그인</a>
-      		<a href="getting-started#download" class="btn btn-info btn-lg">Facebook 으로 로그인</a>
-      		<a href="getting-started#download" class="btn btn-warning btn-lg">Facebook 으로 로그인</a>
-      		<a href="getting-started#download" class="btn btn-danger btn-lg">Facebook 으로 로그인</a>
-      		<a href="getting-started#download" class="btn btn-link btn-lg">Facebook 으로 로그인</a>
+      		<a href="/home" class="btn btn-primary btn-lg">Facebook 으로 로그인</a>
     		</p>
 		</div>
 		<div class="page-scroll">
@@ -118,7 +111,7 @@
 								<p class="subtitle">Pixel Crafter</p>
 								<div class="avatar">
 									<img
-										src="http://bootstraptaste.com/theme/squadfree/img/team/1.jpg"
+										src="resources/img/team/1.jpg"
 										alt="" class="img-responsive img-circle" />
 								</div>
 							</div>
@@ -133,7 +126,7 @@
 								<p class="subtitle">Ruby on Rails</p>
 								<div class="avatar">
 									<img
-										src="http://bootstraptaste.com/theme/squadfree/img/team/2.jpg"
+										src="resources/img/team/2.jpg"
 										alt="" class="img-responsive img-circle" />
 								</div>
 
@@ -149,7 +142,7 @@
 								<p class="subtitle">jQuery Ninja</p>
 								<div class="avatar">
 									<img
-										src="http://bootstraptaste.com/theme/squadfree/img/team/3.jpg"
+										src="resources/img/team/3.jpg"
 										alt="" class="img-responsive img-circle" />
 								</div>
 
@@ -165,7 +158,7 @@
 								<p class="subtitle">Typographer</p>
 								<div class="avatar">
 									<img
-										src="http://bootstraptaste.com/theme/squadfree/img/team/4.jpg"
+										src="resources/img/team/4.jpg"
 										alt="" class="img-responsive img-circle" />
 								</div>
 
@@ -209,7 +202,7 @@
 						<div class="service-box">
 							<div class="service-icon">
 								<img
-									src="http://bootstraptaste.com/theme/squadfree/img/icons/service-icon-1.png"
+									src="resources/img/service-icon-1.png"
 									alt="" />
 							</div>
 							<div class="service-desc">
@@ -225,7 +218,7 @@
 						<div class="service-box">
 							<div class="service-icon">
 								<img
-									src="http://bootstraptaste.com/theme/squadfree/img/icons/service-icon-2.png"
+									src="resources/img/service-icon-2.png"
 									alt="" />
 							</div>
 							<div class="service-desc">
@@ -241,7 +234,7 @@
 						<div class="service-box">
 							<div class="service-icon">
 								<img
-									src="http://bootstraptaste.com/theme/squadfree/img/icons/service-icon-3.png"
+									src="resources/img/service-icon-3.png"
 									alt="" />
 							</div>
 							<div class="service-desc">
@@ -257,7 +250,7 @@
 						<div class="service-box">
 							<div class="service-icon">
 								<img
-									src="http://bootstraptaste.com/theme/squadfree/img/icons/service-icon-4.png"
+									src="resources/img/service-icon-4.png"
 									alt="" />
 							</div>
 							<div class="service-desc">
