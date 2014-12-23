@@ -13,6 +13,7 @@
         <![endif]-->
         
 		<link href="resources/css/google-plus.css" rel="stylesheet">
+		<link href="resources/css/animate.css" rel="stylesheet">
     </head>
     
     <body class="">
@@ -221,7 +222,7 @@ the 100% free Bootply.com code repository.
     	<div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Upgrade to Bootstrap 3</h4></div>
    			<div class="panel-body">
-              <img src="resources/img/photo.png" class="img-circle pull-right"> <a href="#">Guidance and Tools</a>
+              <img src="resources/img/photo.png" class="img-circle pull-right wow pulse animated" data-wow-iteration="3" data-wow-duration="1.2s"> <a href="#">Guidance and Tools</a>
               <div class="clearfix"></div>
               <hr>
               <p>Migrating from Bootstrap 2.x to 3 is not a simple matter of swapping out the JS and CSS files.
@@ -347,7 +348,7 @@ creating Web pages.</p>
   		<div class="col-md-12"><h2>Playground</h2></div>
         <div class="col-md-12">
           <div class="alert alert-info alert-dismissable">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">׼/button>
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
               <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
           </div>
         </div>
@@ -518,7 +519,7 @@ creating Web pages.</p>
         
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
 	<script src="resources/js/lib/wow.js"></script>
 		
         <script type="text/javascript">
@@ -544,7 +545,6 @@ creating Web pages.</p>
 	<script type='text/javascript'>
 		$(document).ready(function() {
 			new WOW().init();
-
 		});
 	</script>
 </body>

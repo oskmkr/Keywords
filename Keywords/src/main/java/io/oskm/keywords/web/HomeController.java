@@ -31,4 +31,9 @@ public class HomeController {
 	public String viewGooglePlus() {
 		return "google_plus";
 	}
+	
+	@RequestMapping({"/test"})
+	public String viewTest() {
+		return "test";
+	}
 }
