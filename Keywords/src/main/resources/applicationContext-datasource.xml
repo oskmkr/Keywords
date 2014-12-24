@@ -20,7 +20,7 @@
 		<property name="timeBetweenEvictionRunsMillis" value="60000" />
 	</bean>
 
-	<bean id="dataSourceTest" parent="parentDataSource">
+	<bean id="dataSource" parent="parentDataSource">
 		<property name="url" value="${test.jdbc.url}" />
 	</bean>
 
