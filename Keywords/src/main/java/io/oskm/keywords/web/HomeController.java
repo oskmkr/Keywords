@@ -38,4 +38,9 @@ public class HomeController {
 	public String viewTest() {
 		return "test";
 	}
+	
+	@RequestMapping({ "/wow" })
+	public String viewWow() {
+		return "wow";
+	}
 }

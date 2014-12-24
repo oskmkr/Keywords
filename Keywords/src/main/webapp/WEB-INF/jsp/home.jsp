@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<!--main-->
-	<div class="container" id="main">
+	<div class="container nosubnav" id="main">
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
 				<div class="well">

@@ -8,6 +8,7 @@
 	<import resource="applicationContext-propertyplaceholder.xml" />
 	<import resource="applicationContext-datasource.xml" />
 	<import resource="applicationContext-dao-config.xml" />
+	<import resource="applicationContext-mongo.xml" />
 	<!-- 
 	<import resource="applicationContext-service.xml" />
 	<import resource="applicationContext-external-httpclient.xml" />
