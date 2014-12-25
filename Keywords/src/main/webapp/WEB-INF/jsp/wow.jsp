@@ -87,7 +87,6 @@ rollOut
 </head>
 
 <body class="">
-
 	<div class="navbar navbar-fixed-top header">
 		<div class="col-md-12">
 			<div class="navbar-header">
@@ -123,41 +122,12 @@ rollOut
 			</div>
 		</div>
 	</div>
-	<div class="navbar navbar-default" id="subnav">
-		<div class="col-md-12">
-			<div class="navbar-header">
-
-				<a href="#" style="margin-left: 15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home" style="color: #dd1111;"></i> Home
-					<small><i class="glyphicon glyphicon-chevron-down"></i></small></a>
-				<ul class="nav dropdown-menu">
-					<li><a href="#"><i class="glyphicon glyphicon-user" style="color: #1111dd;"></i> Profile</a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-dashboard" style="color: #0000aa;"></i> Dashboard</a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-inbox" style="color: #11dd11;"></i> Pages</a></li>
-					<li class="nav-divider"></li>
-					<li><a href="#"><i class="glyphicon glyphicon-cog" style="color: #dd1111;"></i> Settings</a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-plus"></i> More..</a></li>
-				</ul>
-
-
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse2">
-					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-
-			</div>
-			<div class="collapse navbar-collapse" id="navbar-collapse2">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Posts</a></li>
-					<li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
-					<li><a href="#aboutModal" role="button" data-toggle="modal">About</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
 
 	<!--main-->
 	<div class="container" id="main">
 		<div class="row">
-			<div class="col-sm-6 col-md-4">
+			<div id="cardContainer" class="col-sm-6 col-md-4">
+			<%--
 				<div class="panel panel-default wow tada" data-wow-delay="0.4s">
 					<div class="panel-heading">
 						<a href="#" class="pull-right">View all</a>
@@ -303,7 +273,7 @@ rollOut
 						</ul>
 					</div>
 				</div>
-
+ --%>
 			</div>
 			<div class="col-sm-6 col-md-4">
 
@@ -709,8 +679,6 @@ rollOut
 	</div>
 	<!--/main-->
 
-
-
 	<!--login modal-->
 	<div style="display: none;" id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
@@ -732,8 +700,7 @@ rollOut
 						<div class="form-group">
 							<button class="btn btn-primary btn-lg btn-block">Sign In</button>
 							<span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
-						</div>
-					</form>
+						</div>					</form>
 				</div>
 				<div class="modal-footer">
 					<div class="col-md-12">
@@ -770,30 +737,104 @@ rollOut
 	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
 	<script src="resources/js/lib/wow.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(
-				function() {
-
-					$('#btnToggle').click(
-							function() {
-								if ($(this).hasClass('on')) {
-									$('#main .col-md-6').addClass('col-md-4')
-											.removeClass('col-md-6');
-									$(this).removeClass('on');
-								} else {
-									$('#main .col-md-4').addClass('col-md-6')
-											.removeClass('col-md-4');
-									$(this).addClass('on');
-								}
-							});
-				});
+	<script src="resources/js/lib/underscore.js"></script>
+	
+	<script id="cardTemplate" type="text/x-jquery-template">
+	<div class="panel panel-default wow <\%=animationName%>" data-wow-delay="0.4s">
+		<div class="panel-heading">
+			<a href="#" class="pull-right">run animation</a>
+			<h4><\%=animationName%></h4>
+		</div>
+	</div>
 	</script>
-
+	
 	<!-- JavaScript jQuery code from Bootply.com editor  -->
 	<script type='text/javascript'>
 		$(document).ready(function() {
 			new WOW().init();
+						
+			var arrAnimation = ['bounce',
+			                    
+			'flash',
+			'pulse',
+			'shake',
+			'swing',
+			'tada',
+			'wobble',
+			'bounceIn',
+			'bounceInDown',
+			'bounceInLeft',
+			'bounceInRight',
+			'bounceInUp',
+			'bounceOut',
+			'bounceOutDown',
+			'bounceOutLeft',
+			'bounceOutRight',
+			'bounceOutUp',
+			'fadeIn',
+			'fadeInDown',
+			'fadeInDownBig',
+			'fadeInLeft',
+			'fadeInLeftBig',
+			'fadeInRight',
+			'fadeInRightBig',
+			'fadeInUp',
+			'fadeInUpBig',
+			'fadeOut',
+			'fadeOutDown',
+			'fadeOutDownBig',
+			'fadeOutLeft',
+			'fadeOutLeftBig',
+			'fadeOutRight',
+			'fadeOutRightBig',
+			'fadeOutUp',
+			'fadeOutUpBig',
+			'flip',
+			'flipInX',
+			'flipInY',
+			'flipOutX',
+			'flipOutY',
+			'lightSpeedIn',
+			'lightSpeedOut',
+			'rotateIn',
+			'rotateInDownLeft',
+			'rotateInDownRight',
+			'rotateInUpLeft',
+			'rotateInUpRight',
+			'rotateOut',
+			'rotateOutDownLeft',
+			'rotateOutDownRight',
+			'rotateOutUpLeft',
+			'rotateOutUpRight',
+			'slideInDown',
+			'slideInLeft',
+			'slideInRight',
+			'slideOutLeft',
+			'slideOutRight',
+			'slideOutUp',
+			'hinge',
+			'rollIn',
+			'rollOut'
+			];
+
+			var a = [];
+			for(var each in arrAnimation) {
+				$('#cardContainer').append(_.template($('#cardTemplate').html(), {animationName : arrAnimation[each]}));
+			}
+			
+			$(document.body).bind('click', function(evt) {
+				console.log(evt);
+				var el = evt.target;
+				if(el.tagName == 'A') {
+					//$(el).parent().parent().toggleClass();
+					//$(el).parent().parent().toggleClass();
+					new WOW().init();
+					evt.preventDefault();
+				}
+			});
+			
+			
+			
 		});
 	</script>
 </body>
