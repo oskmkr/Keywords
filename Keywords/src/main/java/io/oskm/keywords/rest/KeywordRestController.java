@@ -1,15 +1,17 @@
 package io.oskm.keywords.rest;
 
 import io.oskm.keywords.core.Keyword;
+import io.oskm.keywords.exception.ResourceNotFoundException;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,15 +26,36 @@ public class KeywordRestController {
 											 * { "application/xml" }
 											 */)
 	@ResponseBody
-	public Keyword add(@PathVariable String content) {
+	public Keyword add(@PathVariable String content) throws Exception {
 
 		LOG.debug("use ACL : " + temp + content);
 
 		Keyword keyword = new Keyword();
 		keyword.setContent(content);
+		
+		if(content.equals("exception")) {
+			throw new Exception();
+		}
+		
+		if(content.equals("resourceNotFound")) {
+			throw new ResourceNotFoundException();
+		}
+		
 
 		return keyword;
 	}
+
+	/*
+	@ExceptionHandler
+	public String handleException(Exception e, HttpServletRequest request) {
+		
+		LOG.error("# exception", e);
+		
+		return "exception";
+		
+	}
+	
+	*/
 
 	//@Value("#{props.temp1}")
 	private String temp;
